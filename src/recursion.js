@@ -66,7 +66,24 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-
+  var isPositive = true;
+  if (n < 0) {
+    n = Math.abs(n);
+    isPositive = false;
+  }
+  if (n === 0) {
+    return 0;
+  }
+  var total = n;
+  if (total - 1 === 0) {
+    total = total - 1;
+  } else {
+    total = (total - 1) + sumBelow(total - 1);
+  }
+  if (!isPositive) {
+    return -(total)
+  }
+  return total;
 };
 
 // 6. Get the integers within a range (x, y).
